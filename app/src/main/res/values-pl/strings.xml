@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">HotelApp</string>
+    <string name="error">Wystąpił błąd</string>
+    <string name="pin_added">PIN został dodany</string>
+    <string name="close">Zamknij</string>
+    <string name="invalid_name">Nieprawidlowa nazwa. Pole nie może być puste</string>
+    <string name="code">Kod: </string>
+    <string name="name">Nazwa: </string>
+    <string name="generate_pin">Wygeneruj nowy kod PIN</string>
+    <string name="generate">Wygeneruj</string>
+    <string name="name_edittext">Nazwa</string>
+</resources>

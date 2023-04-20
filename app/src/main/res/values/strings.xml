@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">HotelApp</string>
+    <string name="error">An error occurred</string>
+    <string name="pin_added">PIN has been added</string>
+    <string name="close">Close</string>
+    <string name="invalid_name">Invalid name. The field cannot be empty</string>
+    <string name="code">Code: </string>
+    <string name="name">Name: </string>
+    <string name="generate_pin">Generate new PIN Code</string>
+    <string name="generate">Generate</string>
+    <string name="name_edittext">Name</string>
+</resources>

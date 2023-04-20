@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/pinsFragment">
+    <fragment
+        android:id="@+id/pinsFragment"
+        android:name="com.example.pinapp.ui.pins.PinsFragment"
+        android:label="fragment_pins"
+        tools:layout="@layout/fragment_pins" >
+        <action
+            android:id="@+id/action_pinsFragment_to_addPinFragment"
+            app:destination="@id/addPinFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addPinFragment"
+        android:name="com.example.pinapp.ui.addPin.AddPinFragment"
+        android:label="fragment_add_pin"
+        tools:layout="@layout/fragment_add_pin" />
+</navigation>
