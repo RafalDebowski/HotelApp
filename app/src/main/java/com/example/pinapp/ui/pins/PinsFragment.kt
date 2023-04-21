@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import com.example.pinapp.PinApplication
 import com.example.pinapp.R
 import com.example.pinapp.databinding.FragmentPinsBinding
+import com.example.pinapp.model.domain.PinDomain
 import com.example.pinapp.ui.FragmentEnum
 import com.example.pinapp.ui.addPin.AddPinViewModel
 import com.example.pinapp.ui.base.BaseFragment
@@ -17,7 +18,9 @@ class PinsFragment : BaseFragment() {
 
     lateinit var binding: FragmentPinsBinding
 
-    private val pinAdapter = PinAdapter()
+    private val pinAdapter = PinAdapter(
+        ::deletePinById
+    )
 
     override val viewModel: PinsViewModel by lazy {
         viewModelOf(
@@ -51,5 +54,9 @@ class PinsFragment : BaseFragment() {
         binding.buttonAddPin.setOnClickListener {
             openFragment(FragmentEnum.ADD_PIN)
         }
+    }
+
+    private fun deletePinById(pin: PinDomain) {
+        viewModel.deletePinById(pin)
     }
 }

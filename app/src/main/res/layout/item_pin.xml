@@ -14,12 +14,12 @@
             android:id="@+id/image_view"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/ic_key"
+            android:contentDescription="@string/error"
             android:padding="8dp"
+            android:src="@drawable/ic_key"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/error" />
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <TextView
@@ -43,7 +43,7 @@
             android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@id/name_text_view"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/delete_button"
             app:layout_constraintStart_toEndOf="@id/name_text_view"
             app:layout_constraintTop_toTopOf="@id/name_text_view"
             tools:text="test" />
@@ -69,10 +69,20 @@
             android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@id/code_text_view"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/delete_button"
             app:layout_constraintStart_toEndOf="@id/code_text_view"
             app:layout_constraintTop_toTopOf="@id/code_text_view"
             tools:text="test" />
+
+        <ImageView
+            android:id="@+id/delete_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:contentDescription="@string/error"
+            android:padding="8dp"
+            android:src="@drawable/ic_delete"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

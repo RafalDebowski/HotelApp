@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.pinapp.databinding.ItemPinBinding
 import com.example.pinapp.model.domain.PinDomain
 
-class PinAdapter : RecyclerView.Adapter<PinAdapter.ViewHolder>() {
+class PinAdapter(
+    val onDeleteClick: (pin: PinDomain) -> Unit
+) : RecyclerView.Adapter<PinAdapter.ViewHolder>() {
 
     var listItem = mutableListOf<PinDomain>()
 
@@ -31,22 +33,35 @@ class PinAdapter : RecyclerView.Adapter<PinAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(
-            listItem[position]
+            listItem[holder.adapterPosition],
+            onDeleteClick = {
+                deleteItem(holder.adapterPosition)
+            }
         )
     }
 
-    class ViewHolder(
+    private fun deleteItem(position: Int) {
+        onDeleteClick(listItem[position])
+        listItem.removeAt(position)
+        notifyItemRemoved(position)
+    }
+
+    inner class ViewHolder(
         private val binding: ItemPinBinding
     ) : RecyclerView.ViewHolder(
         binding.root
     ) {
         fun bind(
-            item: PinDomain
+            item: PinDomain,
+            onDeleteClick: () -> Unit
         ) {
             binding.code.text = item.code.toString()
             binding.name.text = item.name
-        }
 
+            binding.deleteButton.setOnClickListener {
+                onDeleteClick()
+            }
+        }
     }
 
     class PinDiffCallback(
