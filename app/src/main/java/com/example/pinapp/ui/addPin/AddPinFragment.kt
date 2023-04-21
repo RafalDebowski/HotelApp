@@ -17,6 +17,11 @@ class AddPinFragment : BaseFragment() {
 
     private lateinit var binding: FragmentAddPinBinding
 
+    companion object {
+        const val MAX_REPEAT_DIGIT = 4
+        const val MAX_CODE_LENGTH = 6
+    }
+
     override val viewModel: AddPinViewModel by lazy {
         viewModelOf(
             AddPinViewModel::class

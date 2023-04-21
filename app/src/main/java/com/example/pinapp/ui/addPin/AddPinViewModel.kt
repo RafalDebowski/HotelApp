@@ -2,8 +2,9 @@ package com.example.pinapp.ui.addPin
 
 import androidx.lifecycle.MutableLiveData
 import com.example.pinapp.model.domain.PinDomain
+import com.example.pinapp.ui.addPin.AddPinFragment.Companion.MAX_CODE_LENGTH
+import com.example.pinapp.ui.addPin.AddPinFragment.Companion.MAX_REPEAT_DIGIT
 import com.example.pinapp.ui.base.BaseViewModel
-import com.example.pinapp.ui.dialog.DialogTypeEnum
 import com.example.pinapp.usecases.PinUseCase
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -25,7 +26,7 @@ class AddPinViewModel @Inject constructor(
             insertPinToDB(
                 PinDomain(
                     name = pinName,
-                    code = generatePin()
+                    code = generateCode()
                 )
             )
         } else {
@@ -33,24 +34,29 @@ class AddPinViewModel @Inject constructor(
         }
     }
 
-    fun generatePin(): Long {
+    fun generateCode(): Long {
         val digits = mutableListOf(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
         digits.shuffle()
 
-        var num = 0
-        for (i in 0 until 6) {
+        var generatedCode = 0
+
+        for (i in 0 until MAX_CODE_LENGTH) {
             val digit = digits[i]
-            num *= 10
-            num += digit
+            generatedCode *= 10
+            generatedCode += digit
         }
 
-        val hasRepeatingDigits = num.toString().groupBy { it }.any { it.value.size >= 4 }
+        val hasRepeatingDigits = generatedCode.toString()
+            .groupBy { it }
+            .any {
+                it.value.size >= MAX_REPEAT_DIGIT
+            }
 
         if (hasRepeatingDigits) {
-            return generatePin()
+            return generateCode()
         }
 
-        return num.toLong()
+        return generatedCode.toLong()
     }
 
     private fun insertPinToDB(pin: PinDomain) {

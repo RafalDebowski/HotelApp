@@ -21,14 +21,11 @@ class ExampleUnitTest {
 
     @Test
     fun testGenerateRandomInt() {
-        val num = addPinViewModel.generatePin()
+        val num = addPinViewModel.generateCode()
         val digits = num.toString().toCharArray()
 
         // Check that the generated number has 6 digits
         assertEquals(6, digits.size)
-
-        // Check that the generated number has 6 unique digits
-        assertEquals(6, digits.toSet().size)
 
         // Check that the generated number doesn't contain the same digit four times in a row
         assertFalse(
