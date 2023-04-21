@@ -43,6 +43,7 @@ class PinsFragment : BaseFragment() {
 
     private fun observeData() {
         viewModel.pinList.observe(viewLifecycleOwner) {
+            binding.emptyListEditText.visibility = if (it.isNotEmpty()) View.GONE else View.VISIBLE
             pinAdapter.setNewData(it)
         }
     }

@@ -9,4 +9,5 @@
     <string name="generate_pin">Generate new PIN Code</string>
     <string name="generate">Generate</string>
     <string name="name_edittext">Name</string>
+    <string name="list_is_empty">List is empty, please add your first pin</string>
 </resources>

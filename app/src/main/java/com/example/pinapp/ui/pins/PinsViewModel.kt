@@ -12,7 +12,7 @@ class PinsViewModel @Inject constructor(
     private val pinUseCase: PinUseCase
 ) : BaseViewModel() {
 
-    val pinList = MutableLiveData<List<PinDomain>>()
+    val pinList = MutableLiveData<MutableList<PinDomain>>()
 
     fun getPins() {
         val disposable = pinUseCase
@@ -20,7 +20,7 @@ class PinsViewModel @Inject constructor(
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
             .subscribe({
-                pinList.postValue(it)
+                pinList.postValue(it.toMutableList())
             }, { error ->
                 baseAction.value = Action.ShowInfoDialog(
                     message = error.message
@@ -37,6 +37,7 @@ class PinsViewModel @Inject constructor(
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe({
+                    updateLocalList(pin)
                 }, { error ->
                     baseAction.value = Action.ShowInfoDialog(
                         message = error.message
@@ -47,4 +48,8 @@ class PinsViewModel @Inject constructor(
         }
     }
 
+    private fun updateLocalList(pin: PinDomain) {
+        pinList.value?.remove(pin)
+        pinList.postValue(pinList.value)
+    }
 }
