@@ -36,12 +36,18 @@ class AddPinViewModel @Inject constructor(
 
     fun generateCode(): Int {
         val digits = mutableListOf(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
+        val digitsWithoutZero = mutableListOf(1, 2, 3, 4, 5, 6, 7, 8, 9)
         digits.shuffle()
+        digitsWithoutZero.shuffle()
 
         var generatedCode = 0
 
         for (i in 0 until MAX_CODE_LENGTH) {
-            val digit = digits[i]
+            val digit : Int = if (i == 0) {
+                digitsWithoutZero[i]
+            } else {
+                digits[i]
+            }
             generatedCode *= 10
             generatedCode += digit
         }
