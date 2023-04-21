@@ -22,10 +22,23 @@ class ExampleUnitTest {
     @Test
     fun testGenerateRandomInt() {
         val num = addPinViewModel.generateCode()
+        val numWithRepeats = 112112
+        val numWithoutRepeats = 112233
         val digits = num.toString().toCharArray()
 
         // Check that the generated number has 6 digits
         assertEquals(6, digits.size)
+
+
+        //check that the numWithRepeats contains more than 4 the same digits
+        assertTrue(
+            numWithRepeats.toString().groupBy { it }.any { it.value.size >= 4 }
+        )
+
+        //check that the numWithoutRepeats contains more than 4 the same digits
+        assertFalse(
+            numWithoutRepeats.toString().groupBy { it }.any { it.value.size >= 4 }
+        )
 
         // Check that the generated number doesn't contain the same digit four times in a row
         assertFalse(
