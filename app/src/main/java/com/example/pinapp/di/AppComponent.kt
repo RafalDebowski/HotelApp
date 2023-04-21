@@ -2,7 +2,6 @@ package com.example.pinapp.di
 
 import com.example.pinapp.di.modules.AddPinViewModule
 import com.example.pinapp.ui.main.MainActivity
-import com.example.pinapp.ui.main.MainViewModel
 import com.example.pinapp.di.modules.DatabaseModule
 import com.example.pinapp.di.modules.PinViewModule
 import com.example.pinapp.di.modules.ViewModelFactoryModule

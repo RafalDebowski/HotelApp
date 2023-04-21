@@ -1,7 +1,6 @@
 package com.example.pinapp.ui.pins
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,9 +9,7 @@ import com.example.pinapp.R
 import com.example.pinapp.databinding.FragmentPinsBinding
 import com.example.pinapp.model.domain.PinDomain
 import com.example.pinapp.ui.FragmentEnum
-import com.example.pinapp.ui.addPin.AddPinViewModel
 import com.example.pinapp.ui.base.BaseFragment
-import com.example.pinapp.ui.main.MainViewModel
 
 class PinsFragment : BaseFragment() {
 
