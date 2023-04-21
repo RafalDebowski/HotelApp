@@ -34,7 +34,7 @@ class AddPinViewModel @Inject constructor(
         }
     }
 
-    fun generateCode(): Long {
+    fun generateCode(): Int {
         val digits = mutableListOf(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
         digits.shuffle()
 
@@ -56,7 +56,7 @@ class AddPinViewModel @Inject constructor(
             return generateCode()
         }
 
-        return generatedCode.toLong()
+        return generatedCode
     }
 
     private fun insertPinToDB(pin: PinDomain) {
@@ -74,7 +74,7 @@ class AddPinViewModel @Inject constructor(
         addDisposable(disposable)
     }
 
-    sealed class AddPinAction() {
+    sealed class AddPinAction {
         object ShowPinIsAddedDialog : AddPinAction()
         object ShowInvalidNameDialog : AddPinAction()
     }

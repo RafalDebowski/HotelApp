@@ -9,7 +9,6 @@ open class Pin: RealmObject {
      @PrimaryKey
      var id: ObjectId = ObjectId.invoke()
      var name: String = ""
-     var code: Long = -1
-
+     var code: Int = -1
 }
 
